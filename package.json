@@ -1,5 +1,5 @@
 {
-  "name": "brauprotokoll",
+  "name": "intermittent-fasting",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,10 +18,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "sinon": "^7.1.1",
-    "eslint": "^5.10.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "sinon": "^7.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
