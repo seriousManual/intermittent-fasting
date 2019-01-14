@@ -1,0 +1,53 @@
+$breakpoint-s: 575px;
+$breakpoint-m: 768px;
+$breakpoint-l: 991px;
+$breakpoint-xl: 1199px;
+
+html {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+
+  @media all and (min-width: $breakpoint-s) {
+    font-size: 20px;
+  }
+
+  @media all and (min-width: $breakpoint-m) {
+    font-size: 24px;
+  }
+
+  @media all and (min-width: $breakpoint-l) {
+    font-size: 26px;
+  }
+
+  @media all and (min-width: $breakpoint-xl) {
+    font-size: 28px;
+  }
+}
+
+button {
+  width: 100%;
+  color: #fff;
+  background-color: #4286f4;
+  border: 0;
+  border-radius: 1rem;
+  height: 5rem;
+
+  svg {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+dl {
+  margin: 1.5em 0;
+  text-align: center;
+
+  dt {
+    color: #aaa;
+  }
+
+  dd {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+}
