@@ -1,13 +1,9 @@
 import uuid from 'uuid';
 
-const MEAL_ADD = 'MEAL:ADD';
-const MEAL_REMOVE = 'MEAL:REMOVE';
+export const MEAL_ADD = 'MEAL:ADD';
+export const MEAL_REMOVE = 'MEAL:REMOVE';
 
-export function createMealAddAction(date=null) {
-  if (date === null) {
-    date = new Date();
-  }
-
+export function createMealAddAction(date) {
   return { type: MEAL_ADD, date };
 }
 

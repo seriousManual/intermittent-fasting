@@ -16,7 +16,6 @@ if (preexistingState) {
   preexistingState = JSON.parse(preexistingState);
 }
 
-
 const sagaMiddleware = createSagaMiddleware()  
 const store = createStore(reducer, preexistingState || {}, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(saga);

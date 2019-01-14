@@ -1,29 +1,27 @@
-// import { call, put, select, takeEvery } from 'redux-saga/effects'
-// import { delay } from 'redux-saga';
+import { put, select, takeEvery } from 'redux-saga/effects'
+import * as moment from 'moment';
+import ms from 'ms';
 
-// import { SW_STATE_DONE, createStopwatchStartAction, createStopwatchTickAction } from './data';
-// import { getSW } from '../../selector';
+import { createMealAddAction } from './data';
+import { lastMeal } from '../../selector';
 
-// const SAGA_STOPWATCH_START = 'SAGA:SW:START';
+const SAGA_MEAL_ADD = 'SAGA:MEAL:ADD';
 
-// export function createSagaStopwatchStartAction(ident) {
-//   return { type: SAGA_STOPWATCH_START, ident };
-// }
+export function createSagaAddMealAction(date) {
+  return { type: SAGA_MEAL_ADD, date };
+}
 
-// export default function* watchStopwatch() {
-//   yield takeEvery(SAGA_STOPWATCH_START, sagaStopwatchStart)
-// }
+export default function* watchAddMeal() {
+  yield takeEvery(SAGA_MEAL_ADD, sagaAddMeal)
+}
 
-// export function* sagaStopwatchStart({ ident }) {
-//   yield put(createStopwatchStartAction(ident));
+export function* sagaAddMeal({ date }) {
+  const myLastMeal = yield select(lastMeal);
+  const myDate = date || new Date();
 
-//   while (true) {
-//     const sw = yield select(getSW, ident);
-//     if (sw.state === SW_STATE_DONE) {
-//       break;
-//     }
+  if (myLastMeal && moment(myDate).diff(moment(myLastMeal.date)) < ms('15m')) {
+    return;
+  }
 
-//     yield put(createStopwatchTickAction(ident));
-//     yield call(delay, 1000);
-//   }
-// }
+  yield put(createMealAddAction(myDate));
+}

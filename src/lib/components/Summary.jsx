@@ -32,10 +32,21 @@ class Summary extends React.Component {
         <dd>{lastMealFormatted}</dd>
 
         <dt>time to next meal:</dt>
-        <dd>{timeToNextMeal}</dd>
+        <dd>
+          {timeToNextMeal}
+          <div className="sub-script">({todayOrWithDate(nextMeal)})</div>
+        </dd>
       </dl>
     );
   }
+}
+
+function todayOrWithDate(myDate) {
+  if (myDate.isSame(moment(), 'day')) {
+    return myDate.format('HH:mm');
+  }
+
+  return myDate.format('DD.MM. - HH:mm');
 }
 
 export default connect(state => {
