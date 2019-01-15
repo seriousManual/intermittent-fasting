@@ -2,10 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {FaUtensils} from 'react-icons/fa';
  
-import 'react-week-calendar/dist/style.css';
-
 import {createSagaAddMealAction} from '../state/meals/saga';
 import Summary from './Summary';
+import Graph from './Graph';
 
 class App extends React.Component {
   render() {
@@ -17,6 +16,7 @@ class App extends React.Component {
         <button onClick={() => dispatch(createSagaAddMealAction())}>
           <FaUtensils />
         </button>
+        <Graph />
       </div>
     );
   }

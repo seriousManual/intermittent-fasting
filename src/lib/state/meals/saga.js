@@ -20,8 +20,10 @@ export function* sagaAddMeal({ date }) {
   const myDate = date || new Date();
 
   if (myLastMeal && moment(myDate).diff(moment(myLastMeal.date)) < ms('15m')) {
+    console.log('last meal is too close');
     return;
   }
 
+  console.log('adding meal')
   yield put(createMealAddAction(myDate));
 }

@@ -22,8 +22,10 @@ class Summary extends React.Component {
     const nextMeal = moment(lastMeal.date).add(16, 'hours');
     
     let timeToNextMeal = nextMeal.fromNow();
+    let nextMealTime = todayOrWithDate(nextMeal);
     if (nextMeal.diff(moment()) < 0) {
       timeToNextMeal = 'whenever you want!';
+      nextMealTime = '';
     }
 
     return (
@@ -34,7 +36,7 @@ class Summary extends React.Component {
         <dt>time to next meal:</dt>
         <dd>
           {timeToNextMeal}
-          <div className="sub-script">({todayOrWithDate(nextMeal)})</div>
+          {nextMealTime ? <div className="sub-script">({nextMealTime})</div> : null}
         </dd>
       </dl>
     );

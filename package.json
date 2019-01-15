@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "inpairs": "1.0.3",
     "moment": "^2.22.2",
     "ms": "^2.1.1",
     "node-sass": "4.11.0",
-    "pretty-ms": "^4.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-icons": "3.3.0",
     "react-redux": "^5.1.1",
     "react-scripts": "2.1.1",
-    "react-week-calendar": "0.1.2",
     "redux": "^4.0.1",
     "redux-saga": "^0.16.2",
     "uuid": "^3.3.2"
