@@ -18,8 +18,13 @@ class Summary extends React.Component {
   }
 
   render() {
-    const lastMealFormatted = moment(lastMeal.date).calendar();
-    const nextMeal = moment(lastMeal.date).add(16, 'hours');
+    if (!this.props.lastMeal) {
+      return null;
+    }
+
+    const myLastMealDate = this.props.lastMeal.date;
+    const lastMealFormatted = moment(myLastMealDate).calendar();
+    const nextMeal = moment(myLastMealDate).add(16, 'hours');
     
     let timeToNextMeal = nextMeal.fromNow();
     let nextMealTime = todayOrWithDate(nextMeal);
