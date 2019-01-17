@@ -74,13 +74,14 @@ dl {
       > div {
         position: absolute;
         height: 10px;
-        background-color: #eee;
+        background-color: rgba(0, 0, 0, 0);
         border: 0;
         border-left: 5px solid #4286f4;
         border-radius: 0;
 
         &.hot {
-          background-color: #4286f4;
+          background-color: #7caeff;
+          border-left: 0;
         }
       }
     }

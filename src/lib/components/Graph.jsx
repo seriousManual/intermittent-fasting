@@ -8,27 +8,24 @@ import convertTimeRanges from '../convertTimeRanges';
 
 class Graph extends React.Component {
   render() {
-    console.log(this.props.meals)
     const days = convertTimeRanges(this.props.meals);
-    console.log(days)
+    days.sort((a, b) => moment(b[0].start).valueOf() - moment(a[0].start).valueOf());
 
     return (
       <div id="graph">
         {days.map(ranges => {
           const today = moment(ranges[0].start).utc().hour(0).minutes(0).seconds(0).milliseconds(0);
           return (
-            <div>
+            <div key={today.format()}>
               {today.format('DD.MM.YYYY')}
               <div>
                 {ranges.map(range => {
                   const start = moment(range.start);
                   const end = moment(range.end);
-                  const left = (start.valueOf() - today.valueOf()) / ms('1d') * 100;
-                  const width = (end.valueOf() - start.valueOf()) / ms('1d') * 100;
+                  const left = (100 - ((end.valueOf() - today.valueOf()) / ms('1d') * 100)) + '%';
+                  const width = ((end.valueOf() - start.valueOf()) / ms('1d') * 100) + '%';
 
-                  return <div className={range.is16 ? 'hot' : ''} 
-                    style={{left: left + '%', width: width + '%'}}
-                  />
+                  return <div key={start.format()} className={range.is16 ? 'hot' : ''}  style={{left, width}} />
                 })}
               </div>
             </div>
