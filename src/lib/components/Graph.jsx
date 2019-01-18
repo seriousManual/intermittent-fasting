@@ -15,9 +15,11 @@ class Graph extends React.Component {
       <div id="graph">
         {days.map(ranges => {
           const today = moment(ranges[0].start).utc().hour(0).minutes(0).seconds(0).milliseconds(0);
+          const todayFormat = today.format('DD.MM.YYYY');
+          
           return (
-            <div key={today.format()}>
-              {today.format('DD.MM.YYYY')}
+            <div key={todayFormat}>
+              {todayFormat}
               <div>
                 {ranges.map(range => {
                   const start = moment(range.start);

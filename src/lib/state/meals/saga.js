@@ -2,17 +2,23 @@ import { put, select, takeEvery } from 'redux-saga/effects'
 import * as moment from 'moment';
 import ms from 'ms';
 
-import { createMealAddAction } from './data';
+import { createMealAddAction, createMealRemoveAction } from './data';
 import { lastMeal } from '../../selector';
 
 const SAGA_MEAL_ADD = 'SAGA:MEAL:ADD';
+const SAGA_MEAL_REMOVE = 'SAGA:MEAL:REMOVE';
 
 export function createSagaAddMealAction(date) {
   return { type: SAGA_MEAL_ADD, date };
 }
 
-export default function* watchAddMeal() {
+export function createSagaRemoveMealAction(ident) {
+  return { type: SAGA_MEAL_REMOVE, ident };
+}
+
+export default function* watchMeal() {
   yield takeEvery(SAGA_MEAL_ADD, sagaAddMeal)
+  yield takeEvery(SAGA_MEAL_REMOVE, sagaRemoveMeal);
 }
 
 export function* sagaAddMeal({ date }) {
@@ -24,6 +30,10 @@ export function* sagaAddMeal({ date }) {
     return;
   }
 
-  console.log('adding meal')
+  console.log('adding meal');
   yield put(createMealAddAction(myDate));
+}
+
+export function* sagaRemoveMeal({ident}) {
+  yield put(createMealRemoveAction(ident));
 }
