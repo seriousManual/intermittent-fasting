@@ -2,11 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as moment from 'moment';
 
-import {lastMeal} from '../selector';
 import Rerender from './Rerender';
+
+import {lastMeal} from '../selector';
 
 class Summary extends React.Component {
   render() {
+    return <Rerender>{() => this._render()}</Rerender>
+  }
+
+  _render() {
     if (!this.props.lastMeal) {
       return null;
     }
@@ -23,18 +28,16 @@ class Summary extends React.Component {
     }
 
     return (
-      <Rerender>
-        <dl>
-          <dt>last meal:</dt>
-          <dd>{lastMealFormatted}</dd>
+      <dl>
+        <dt>last meal:</dt>
+        <dd>{lastMealFormatted}</dd>
 
-          <dt>time to next meal:</dt>
-          <dd>
-            {timeToNextMeal}
-            {nextMealTime ? <div className="sub-script">({nextMealTime})</div> : null}
-          </dd>
-        </dl>
-      </Rerender>
+        <dt>time to next meal:</dt>
+        <dd>
+          {timeToNextMeal}
+          {nextMealTime ? <div className="sub-script">({nextMealTime})</div> : null}
+        </dd>
+      </dl>
     );
   }
 }
