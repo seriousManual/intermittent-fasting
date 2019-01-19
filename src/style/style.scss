@@ -29,7 +29,7 @@ button {
   color: #fff;
   background-color: #4286f4;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   height: 5rem;
 
   svg {
@@ -53,6 +53,25 @@ dl {
     .sub-script {
       font-size:0.8rem;
       color: #888; 
+    }
+  }
+}
+
+#mode-switcher {
+  text-align: center;
+
+  button {
+    min-width: 6rem;
+    width: auto;
+    height: auto;
+    padding: 0.3rem;
+    color: #fff;
+    background-color: #4286f4;
+    border: 1px solid #4286f4;
+
+    &:disabled {
+      background-color: #fff;
+      color: #4286f4;
     }
   }
 }
