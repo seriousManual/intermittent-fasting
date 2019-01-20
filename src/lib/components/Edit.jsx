@@ -13,11 +13,11 @@ class Edit extends React.Component {
 
     return (
       <div>
-        
-        
         <ul>
           {meals.map(meal => {
-            return <li>{moment(meal.date).format('DD.MM. - HH:mm')} <FaTrashAlt onClick={() => dispatch(createMealRemoveAction(meal.ident))} /></li>
+            return <li>
+              {moment(meal.date).format('DD.MM. - HH:mm')} <FaTrashAlt onClick={() => dispatch(createMealRemoveAction(meal.ident))} />
+            </li>
           })}
         </ul>
       </div>
@@ -26,5 +26,8 @@ class Edit extends React.Component {
 }
 
 export default connect(state => {
-  return {meals: meals(state)}
+  const myMeals = meals(state).concat([]);
+  myMeals.sort((a, b) => moment(b.date).valueOf() - moment(a.date).valueOf());
+
+  return {meals: myMeals}
 })(Edit);
